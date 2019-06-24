@@ -1,0 +1,15 @@
+Maven,  Yidiþ dilinde “Bilginin Birikimi” anlamýna gelmektedir. 
+Proje baðýmlýlýk yönetim aracýdýr. Hatta direk kendisine “Proje Yöneticisi” denilebilir.
+ Ant’a bir alternatif olarak gösterilen ayný Ant gibi bir JDT(Java Development Tool) ‘dur. 
+Versiyonlarýna baktýðýmýzda 30 Mart 2002' de ilk versiyonun çýktýðýný görüyoruz. 
+Maven, proje geliþtirirken proje içerisinde bir standart oluþturmamýzý, geliþtirme sürecini basitleþtirmemizi, dokümantasyonumuzu etkili bir þekilde oluþturmamýzý, projemizdeki kütüphane baðýmlýlýðýný ve IDE baðýmlýlýðýný ortadan kaldýrmamýzý saðlayan bir araçtýr.
+Bizi internette sayfa sayfa dolaþýp ihtiyacýmýz olan library(kütüphane)’nin ihtiyacýmýz olan versiyonunu arama zahmetinden kurtaran bir çatýdýr. 
+Yani projeniz örneðin log4j.jar ve Spring.jar  gibi kütüphanelere ihtiyaç duyuyorsa; bu ihtiyacý ilgili jar dosyalarýný bularak ilgili yerlere kopyalamak mavenin sorumluluðundadýr.
+pom.xml (maven in proje ayar dosyasý) içerisinde log4j nin þu versiyonu ve Spring’ýn þu versiyonu kullanmak istiyorum demeniz yeterlidir.
+Kullanabilmemiz için çeþit çeþit konfigürasyonlar yapmamýza gerek yoktur.
+Böylece Projelerinizi istediðiniz yere kolayca taþýmanýza + kütüphanelerin yönetilmesine imkan saðlar.
+
+
+http://ugurcanlacin.com/maven-nedir-ve-neden-kullanilir/
+
+Örneðin; Spring Core kütüphanesini projemize dahil edebilmek için aþaðýdaki XML kodunu pom.xml dosyamýza eklememiz gerekiyor.
