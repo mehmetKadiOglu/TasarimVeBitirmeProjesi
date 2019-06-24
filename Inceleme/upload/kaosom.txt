@@ -1,0 +1,30 @@
+for i=1:parametreSayisi
+
+	if lp(i)=<0 && up(i)>=0
+		array = ones(populasyonSize,1);
+		k = populasyonParcacigiOlustur(30, up(i), 1e-10); %pozitif popülasyon oluþturuluyor
+		a = populasyonParcacigiOlustur(20, lp(i)*-1, 1e-10) * -1; %negatif popülasyon oluþturuluyor
+
+		if choice == 1
+			X(:,i) = array;
+		else
+			indexArray = randperm(populasyonSize);
+			for index=1:populasyonSize
+				X(index,i) = array(indexArray(index));
+			end
+		end
+
+%negatif sayýlarda kaos nasýl oluyor? max ve min için max 0 mý oluyor ?
+%olmadý min 0 max lp deðerini pozitif alýrsýn. Kaosdan gelen sonucu negatif yaparsýn
+	end
+
+end
+
+function dizi = populasyonParcacigiOlustur[forMaxIndex, wMax, Wmin]
+
+	for index=1:forMaxIndex
+		chValue=wMax-index*((wMax-Wmin)/forMaxIndex);
+		dizi (index) = kaso(,index,forMaxIndex,chValue);
+	end
+
+end
