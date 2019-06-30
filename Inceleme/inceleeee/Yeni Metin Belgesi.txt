@@ -1,0 +1,1 @@
+algorithms = {'AEFA','AEFA2','AEFA3', 'AEFA4', 'AEFA5', 'AEFA6', 'AEFA7', 'AEFA8', 'AEFA9', 'AEFA10', 'AEFA11','AEFA12','AEFA13', 'AEFA14','AEFA15'}; 
