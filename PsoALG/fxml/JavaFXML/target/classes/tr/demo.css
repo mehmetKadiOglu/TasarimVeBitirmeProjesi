@@ -1,0 +1,9 @@
+#naber {
+    -fx-background-color: red;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+.root {
+     -fx-background-color: transparent
+}

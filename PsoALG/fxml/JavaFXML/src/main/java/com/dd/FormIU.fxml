@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.dd.FormIUController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <HBox  fx:id="TopHBox" alignment="CENTER" minHeight="80" minWidth="220">
+        <Button fx:id="KayitBtn" minWidth="100" text="Kayit Yap"/>
+    </HBox>
+
+    <HBox  fx:id="BottomHBox" alignment="CENTER"  layoutY="80" minHeight="80" minWidth="220">
+        <HBox minHeight="80" minWidth="101" alignment="CENTER">
+            <Button fx:id="SilBtn"  minWidth="100" text="Sil"/>
+        </HBox>
+        <HBox minHeight="80" minWidth="110" alignment="CENTER">
+            <Button  fx:id="GuncelleBtn" minWidth="100"  text="Guncelle"/>
+        </HBox>
+    </HBox>
+
+
+    <VBox fx:id="KayitForm" minWidth="400" minHeight="300" alignment="CENTER" visible="false">
+        <HBox minWidth="200" minHeight="150">
+            <Label text="AD"/>
+            <Label text="SOYAD"/>
+            <Label text="MAAŞ"/>
+            <Label text="TARİH"/>
+        </HBox>
+        <HBox minWidth="200" minHeight="150">
+            <TextField promptText="Giriniz"/>
+            <TextField promptText="Giriniz"/>
+            <TextField promptText="Giriniz"/>
+            <TextField promptText="Giriniz"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

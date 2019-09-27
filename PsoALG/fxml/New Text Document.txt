@@ -1,0 +1,2 @@
+https://docs.oracle.com/javafx/2/layout/builtin_layouts.htm
+http://tutorials.jenkov.com/javafx/stage.html

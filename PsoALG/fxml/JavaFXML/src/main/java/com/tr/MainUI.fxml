@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="hirrim" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.tr.MainController"
+            prefHeight="500.0" prefWidth="600.0">
+
+
+        <VBox fx:id="naber"  layoutX="0" layoutY="0" minHeight="200" minWidth="200" />
+
+
+
+        <VBox fx:id="naber2">
+            <!-- VBox.vgrow ifadesi ile diger componentler yerine yerleşsin kalan bütün alan bu componentin olsun demek-->
+            <TextArea VBox.vgrow="ALWAYS" fx:id="baslikArea" promptText="Yapılacak İşlem detayları"></TextArea>
+
+            <Label fx:id="lblTarih" text="Tarih" AnchorPane.bottomAnchor="100" AnchorPane.rightAnchor="20"></Label>
+            <Button fx:id="buttons" text="tikla"/>
+        </VBox>
+
+</AnchorPane>
