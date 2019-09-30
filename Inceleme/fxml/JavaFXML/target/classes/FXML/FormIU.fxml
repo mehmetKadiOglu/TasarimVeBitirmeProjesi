@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import java.net.URL?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.FXML.FormIUController"
+            prefHeight="400.0" prefWidth="600.0">
+    <stylesheets>
+        <URL value="@formIU.css" />
+    </stylesheets>
+    <HBox fx:id="KayitForm" minWidth="220" minHeight="150"   alignment="CENTER" visible="false">
+        <GridPane fx:id="KayitGridPane" alignment="CENTER" hgap="5" vgap="5">
+            <Label  minWidth="100" text="AD" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="AD" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="SOYAD" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="SOYAD" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="MAAŞ"  GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="MAAS" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+    </HBox>
+    <HBox fx:id="SilForm" minWidth="620" minHeight="200" visible="false" alignment="CENTER">
+        <HBox minWidth="200" minHeight="200">
+            <ListView maxWidth="200" maxHeight="200"/>
+        </HBox>
+        <HBox minWidth="220" minHeight="200">
+            <GridPane  alignment="CENTER" hgap="4" vgap="2" minWidth="220" minHeight="200">
+                <Label  minWidth="100" minHeight="20" text="ad" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label text="add" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="soyad" minHeight="20" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label text="soyadd" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="maas" minHeight="20" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label   text="maaass" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Button GridPane.rowSpan="45" text="Sil Ekle" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Button GridPane.rowSpan="45"  text="Sil Çıkart" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+        </HBox>
+        <HBox minWidth="200" minHeight="200">
+            <ListView maxWidth="200" maxHeight="200"/>
+        </HBox>
+
+    </HBox>
+    <HBox  fx:id="TopHBox" alignment="CENTER" minHeight="80" minWidth="220">
+        <Button fx:id="KayitBtn" minWidth="100" text="Kayit Yap" onAction="#kayitFormHazirla"/>
+    </HBox>
+    <HBox  fx:id="BottomHBox" alignment="CENTER"  layoutY="80" minHeight="80" minWidth="220">
+        <HBox fx:id="BottomHboxSilBtn" minHeight="80" minWidth="110" alignment="CENTER">
+            <Button fx:id="SilBtn"  minWidth="100" text="Sil" onAction="#kayitSil"/>
+        </HBox>
+        <HBox fx:id="BottomHboxGuncelleBtn"  minHeight="80" minWidth="110" alignment="CENTER">
+            <Button  fx:id="GuncelleBtn" minWidth="100"  text="Guncelle"/>
+        </HBox>
+    </HBox>
+
+</AnchorPane>
