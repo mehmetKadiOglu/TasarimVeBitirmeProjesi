@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import java.net.URL?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.FXML.FormIUController"
+            prefHeight="400.0" prefWidth="600.0">
+    <stylesheets>
+        <URL value="@formIU.css" />
+    </stylesheets>
+    <HBox fx:id="SaveForm" minWidth="220" minHeight="150"   alignment="CENTER" visible="false">
+        <GridPane  alignment="CENTER" hgap="5" vgap="5">
+            <Label  minWidth="100" text="AD" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="SaveNameTxt" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="SOYAD" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="SaveSurNameTxt" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="MAAŞ"  GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="SaveSalaryTxt" promptText="Giriniz" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+    </HBox>
+    <HBox fx:id="DeleteForm" minWidth="620" minHeight="200" visible="false" alignment="CENTER">
+        <VBox minWidth="200" minHeight="200" alignment="CENTER">
+                <Label maxHeight="10"  text="Ekli Olanlar"/>
+                <ListView fx:id="DeleteFormMemberList"  maxWidth="200" maxHeight="190"/>
+        </VBox>
+        <VBox alignment="CENTER" minWidth="220" minHeight="200">
+            <GridPane  alignment="CENTER" hgap="4" vgap="2" minWidth="220" minHeight="150">
+                <Label text="ad"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="DeleteNameLabel" text="" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="soyad" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="DeleteSurNameLabel" text="" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="maas" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="DeleteSalaryLabel" text="" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Button  text="Sil Ekle" GridPane.rowIndex="3" GridPane.columnIndex="0" alignment="CENTER" onAction="#MemberDeleteListAddMember" />
+                <Button   text="Sil Çıkart" GridPane.rowIndex="3" GridPane.columnIndex="1" onAction="#MemberDeleteListDeleteMember" />
+                <columnConstraints>
+                    <ColumnConstraints   percentWidth="30"/>
+                    <ColumnConstraints   percentWidth="45"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints valignment="CENTER" percentHeight="40"/>
+                </rowConstraints>
+            </GridPane>
+
+        </VBox>
+        <VBox minWidth="200" minHeight="200" alignment="CENTER" >
+            <Label maxHeight="10"  text="Silinecekler"/>
+            <ListView fx:id="DeleteFormMemberDeleteList"  maxWidth="200" maxHeight="190"/>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="UpdateForm" minHeight="200" minWidth="500" visible="false">
+        <HBox minWidth="200" minHeight="200" alignment="CENTER">
+            <ListView fx:id="UpdateFormMemberList"  maxWidth="200" maxHeight="200"/>
+        </HBox>
+        <HBox minWidth="300" minHeight="200">
+            <GridPane hgap="4" vgap="3" maxHeight="200" maxWidth="300" alignment="CENTER">
+
+                <Label text="Ad" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="UpdateLabelNameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <TextField fx:id="UpdateNameTxt" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+                <Label text="Soyad" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="UpdateLabelSurNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <TextField fx:id="UpdateSurNameTxt" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+                <Label text="Maas" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="UpdateLabelSalaryLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <TextField fx:id="UpdateSalaryTxt" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+
+                <Button fx:id="UpdateFormBtn" minWidth="100" GridPane.rowIndex="3" GridPane.columnIndex="2" text="Guncelle" onAction="#updateMember"/>
+
+                <rowConstraints>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints percentHeight="20"/>
+                    <RowConstraints valignment="CENTER" percentHeight="40"/>
+                </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20"/>
+                    <ColumnConstraints percentWidth="35"/>
+                    <ColumnConstraints percentWidth="40"/>
+                </columnConstraints>
+            </GridPane>
+        </HBox>
+    </HBox>
+
+    <HBox  fx:id="TopHBox" alignment="CENTER" minHeight="80" minWidth="220">
+        <Button fx:id="SaveBtn" minWidth="100" text="Kayit Yap" onAction="#buttonSaveHandle"/>
+    </HBox>
+
+
+    <HBox  fx:id="BottomHBox" alignment="CENTER"  layoutY="80" minHeight="80" minWidth="220">
+        <children>
+            <HBox fx:id="BottomHBoxDelete" minHeight="80" minWidth="110" alignment="CENTER">
+                <Button fx:id="DeleteBtn"  minWidth="100" text="Sil" onAction="#buttonDeleteHandle"/>
+            </HBox>
+
+
+            <HBox fx:id="BottomHBoxUpdate"  minHeight="80" minWidth="110" alignment="CENTER">
+                <Button  fx:id="UpdateBtn" minWidth="100"  text="Guncelle" onAction="#buttonUpdateHandle"/>
+            </HBox>
+        </children>
+
+
+    </HBox>
+
+</AnchorPane>
