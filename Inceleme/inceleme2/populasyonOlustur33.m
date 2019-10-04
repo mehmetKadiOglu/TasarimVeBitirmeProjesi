@@ -1,4 +1,4 @@
-function populasyon = populasyonOlustur(lbArray, ubArray, dimension, populasyonSize, secenek)
+function populasyon = populasyonOlustur33(lbArray, ubArray, dimension, populasyonSize, secenek)
 
     [sutunUzunlugu satirUzunlugu] = size(lbArray);
     
@@ -73,26 +73,28 @@ end
 
 function sutun = sutunOlustur(negatifPopulasyon, pozitifPopulasyon, populasyonSize, ubMax, ubMin, lbMax, lbMin)
     
-    pozitifParca = sutunParcalariOlustur(populasyonSize * pozitifPopulasyon, ubMax, ubMin); %pozitif populasyon olusturuluyor
-    negatifParca = sutunParcalariOlustur(populasyonSize * negatifPopulasyon, lbMax*-1, lbMin) * -1; %negatif populasyon olusturuluyor
+    pozitifParca = sutunParcalariOlustur(populasyonSize * pozitifPopulasyon, ubMax, ubMin); %pozitif popülasyon olu?turuluyor
+    negatifParca = sutunParcalariOlustur(populasyonSize * negatifPopulasyon, lbMax*-1, lbMin) * -1; %negatif popülasyon olu?turuluyor
     
     sutun( 1 : (populasyonSize * pozitifPopulasyon)) = pozitifParca;
-    if negatifPopulasyon >0
     sutun( (populasyonSize * pozitifPopulasyon+1) : (populasyonSize) ) = negatifParca;
-    end
 
 end
 
 function sutunParca = sutunParcalariOlustur(forMaxIndex, wMax, Wmin)
 
+
     sutunParca = zeros(forMaxIndex, 1);
-	for index=1:forMaxIndex
-		chValue=wMax-index*((wMax-Wmin)/forMaxIndex);
-		sutunParca(index) = chaos(4,index,forMaxIndex,chValue);
-        end
     
-        if forMaxIndex > 0
-            sutunParca(forMaxIndex) = Wmin+ (rand*(wMax - Wmin));
-        end
+    for index=1:forMaxIndex
+        chValue=wMax-index*((wMax-Wmin)/forMaxIndex);
+        sutunParca(index) = chaos(4,index,forMaxIndex,chValue);
+    end
+
+    if forMaxIndex > 0
+        sutunParca(forMaxIndex) = Wmin+ (rand*(wMax - Wmin));
+    end
+
+    
 
 end

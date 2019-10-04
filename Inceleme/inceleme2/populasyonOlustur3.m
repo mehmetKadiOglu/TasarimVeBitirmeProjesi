@@ -1,4 +1,4 @@
-function populasyon = populasyonOlustur(lbArray, ubArray, dimension, populasyonSize, secenek)
+function populasyon = populasyonOlustur3(lbArray, ubArray, dimension, populasyonSize, secenek)
 
     [sutunUzunlugu satirUzunlugu] = size(lbArray);
     
@@ -19,7 +19,7 @@ function populasyon = DegiskenSinirAraligindaPopulasyonOlustur(lbArray, ubArray,
 
         if lbArray(i)<=0 && ubArray(i)>=0
             
-            populasyonSutun = sutunOlustur(0.3, 0.7, populasyonSize, ubArray(i), 1e-10, lbArray(i), 1e-10);
+            populasyonSutun = sutunOlustur(0.4, 0.6, populasyonSize, ubArray(i), 1e-10, lbArray(i), 1e-10);
 
         elseif lbArray(i)>=0 && ubArray(i)>=0
             populasyonSutun = sutunOlustur(0, 1, populasyonSize, ubArray(i), lbArray(i), 0, 0);
@@ -86,10 +86,10 @@ end
 function sutunParca = sutunParcalariOlustur(forMaxIndex, wMax, Wmin)
 
     sutunParca = zeros(forMaxIndex, 1);
-	for index=1:forMaxIndex
-		chValue=wMax-index*((wMax-Wmin)/forMaxIndex);
-		sutunParca(index) = chaos(4,index,forMaxIndex,chValue);
-        end
+    for index=1:forMaxIndex
+        chValue=wMax-index*((wMax-Wmin)/forMaxIndex);
+        sutunParca(index) = chaos(4,index,forMaxIndex,chValue);
+    end
     
         if forMaxIndex > 0
             sutunParca(forMaxIndex) = Wmin+ (rand*(wMax - Wmin));

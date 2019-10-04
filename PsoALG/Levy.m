@@ -1,7 +1,6 @@
 function [levy] = Levy()
 
     levy = 10000;
-    %1.5
     while levy > 2
         B = 0.0001 + rand*(2-0.0001);
         r1 = rand;
@@ -13,7 +12,7 @@ function [levy] = Levy()
         h1 = (hPay/hPayda);
         h = h1^(1/B);
 
-        levy = 0.01*( (r1*h)/(r2));
+        levy = 0.1*( (r1*h)/(r2));
     end
 
 

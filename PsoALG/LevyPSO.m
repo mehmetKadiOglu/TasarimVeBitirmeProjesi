@@ -35,7 +35,6 @@ temp = 1000000;
             end
 
 
-
         end
         IterasyonSayisi = IterasyonSayisi + 1;
     end
