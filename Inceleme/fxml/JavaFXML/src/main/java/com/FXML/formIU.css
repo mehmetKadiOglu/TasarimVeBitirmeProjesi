@@ -1,13 +1,5 @@
-.root{
+
+#{
+-fx-background-color: black;
 }
 
- .button{
-
-
-    -fx-background-color: red;
- }
-
-
-#BottomHboxSilBtn {
-    -fx-background-color: red;
-}
