@@ -1,4 +1,4 @@
-function [bestSolution, bestFitness, iteration]=l_rw_coa2()
+function [bestSolution, bestFitness, iteration]=coa()
 
 [~, lb, ub, D, nfevalMAX, ~] = terminate();
 lu=[lb;ub];
@@ -18,17 +18,17 @@ coypack     = repmat(n_coy,n_packs,1);
 for c=1:pop_total
     costs(c,1) = calculate(coyotes(c,:));
 end
-nfeval = 1;
+nfeval = 0;
 [GlobalMin,ibest]   = min(costs);
 GlobalParams        = coyotes(ibest,:);
 
 year=0;
 while nfeval<nfevalMAX % Stopping criteria
     
-    %% Update the years counter
+    % Update the years counter
     year = year + 1;
-    
-    %% Execute the operations inside each pack
+
+    % Execute the operations inside each pack
     for p=1:n_packs
         % Get the coyotes that belong to each pack
         coyotes_aux = coyotes(packs(p,:),:);
@@ -41,10 +41,10 @@ while nfeval<nfevalMAX % Stopping criteria
         coyotes_aux      = coyotes_aux(inds,:);
         ages_aux         = ages_aux(inds,:);
         c_alpha          = coyotes_aux(1,:);
+       
         
         % Compute the social tendency of the pack (Eq. 6)
-        tendency         = coyotes(rouletteWheelSelection( costs ),:);
-               
+        tendency         = median(coyotes_aux,1);
         
         % Update coyotes' social condition
         new_coyotes      = zeros(n_coy_aux,D);
@@ -61,7 +61,7 @@ while nfeval<nfevalMAX % Stopping criteria
             % Try to update the social condition according to the alpha and
             % the pack tendency (Eq. 12)
             new_c = coyotes_aux(c,:) + rand*(c_alpha - coyotes_aux(rc1,:))+ ...
-                                       rand*(tendency - coyotes_aux(rc2,:));
+                                       rand*(tendency  - coyotes_aux(rc2,:));
             
             % Keep the coyotes in the search space (optimization problem
             % constraint)
@@ -87,8 +87,7 @@ while nfeval<nfevalMAX % Stopping criteria
         p2              = zeros(1,D);
         p1(pdr(1))      = 1; % Guarantee 1 charac. per individual
         p2(pdr(2))      = 1; % Guarantee 1 charac. per individual
-        L = levy(D);
-        r               = L(1:D-2);
+        r               = rand(1,D-2);
         p1(pdr(3:end))  = r < prob1;
         p2(pdr(3:end))  = r > 1-prob2;
         
@@ -135,19 +134,10 @@ while nfeval<nfevalMAX % Stopping criteria
     
     %% Output variables (best alpha coyote among all alphas)
     [GlobalMin,ibest]   = min(costs);
-    GlobalParams        = coyotes(ibest,:); 
+    GlobalParams        = coyotes(ibest,:);    
 end
 bestSolution = GlobalParams;
 bestFitness = GlobalMin;
 iteration = nfeval;
 
-end
-
-function [ L ] = levy( D )
-    beta=3/2;
-    sigma=(gamma(1+beta)*sin(pi*beta/2)/(gamma((1+beta)/2)*beta*2^((beta-1)/2)))^(1/beta);
-    u=randn(1,D)*sigma;
-    v=randn(1);
-    step=u./abs(v).^(1/beta);
-    L=100*abs(0.01*step);
 end

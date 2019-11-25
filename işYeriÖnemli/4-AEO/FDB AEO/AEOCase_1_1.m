@@ -8,7 +8,7 @@
 % --------------------------------------------------------------------------
 
 % Artificial ecosystem-based optimization (AEO)
-function [bestSolution, bestFitness, iter]=Case_1_30(fhd, dimension, maxIteration, fNumber)
+function [bestSolution, bestFitness, iter]=AEOCase_1_1()
     % FunIndex: Index of function.
     % MaxIt: The maximum number of iterations.
     % PopSize: The size of population.
@@ -22,15 +22,11 @@ function [bestSolution, bestFitness, iter]=Case_1_30(fhd, dimension, maxIteratio
     % HisBestFit: History best fitness over iterations. 
     % Low: The low bound of search space.
     % Up: The up bound of search space.
-    settings;
-    Low = lbArray;
-    Up = ubArray;
-    Dim = dimension;
-    nPop = 50;
+    [~, Low, Up, Dim, maxIteration, nPop] = terminate();
     MaxIt = ceil((maxIteration/ (nPop*2)));
     for i=1:nPop   
             PopPos(i,:)=rand(1,Dim).*(Up-Low)+Low;
-            PopFit(i)=testFunction(PopPos(i,:)', fhd, fNumber); 
+            PopFit(i)=calculate(PopPos(i,:)); 
     end
     BestF=inf;
     BestX=[];
@@ -76,7 +72,7 @@ function [bestSolution, bestFitness, iter]=Case_1_30(fhd, dimension, maxIteratio
         end             
              for i=1:nPop        
                  newPopPos(i,:)=SpaceBound(newPopPos(i,:),Up,Low);
-                 newPopFit(i)=testFunction(newPopPos(i,:)', fhd, fNumber);  
+                 newPopFit(i)=calculate(newPopPos(i,:));  
                     if newPopFit(i)<PopFit(i)
                        PopFit(i)=newPopFit(i);
                        PopPos(i,:)=newPopPos(i,:);
@@ -91,7 +87,7 @@ function [bestSolution, bestFitness, iter]=Case_1_30(fhd, dimension, maxIteratio
          
           for i=1:nPop        
                  newPopPos(i,:)=SpaceBound(newPopPos(i,:),Up,Low);
-                 newPopFit(i)=testFunction(newPopPos(i,:)', fhd, fNumber);     
+                 newPopFit(i)=calculate(newPopPos(i,:));     
                     if newPopFit(i)<PopFit(i)
                        PopPos(i,:)=newPopPos(i,:);
                         PopFit(i)=newPopFit(i);

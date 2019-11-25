@@ -1,11 +1,6 @@
-function [bestSolution, bestFitness, iteration]=l_rw_coa1(fhd, dimension, maxIteration, fNumber)
+function [bestSolution, bestFitness, iteration]=l_rw_coa1()
 
-settings;
-
-nfevalMAX=maxIteration;
-D = dimension;
-lb = lbArray;
-ub = ubArray;
+[~, lb, ub, D, nfevalMAX, ~] = terminate();
 lu=[lb;ub];
 VarMin = lu(1,:);
 VarMax = lu(2,:);
@@ -21,7 +16,7 @@ packs       = reshape(randperm(pop_total),n_packs,[]);
 coypack     = repmat(n_coy,n_packs,1);
 
 for c=1:pop_total
-    costs(c,1) = testFunction(coyotes(c,:)', fhd, fNumber);
+    costs(c,1) = calculate(coyotes(c,:));
 end
 nfeval = 1;
 [GlobalMin,ibest]   = min(costs);
@@ -73,7 +68,7 @@ while nfeval<nfevalMAX % Stopping criteria
             new_coyotes(c,:) = min(max(new_c,VarMin),VarMax);
             
             % Evaluate the new social condition (Eq. 13)
-            new_cost = testFunction(new_coyotes(c,:)', fhd, fNumber);
+            new_cost = calculate(new_coyotes(c,:));
             nfeval   = nfeval+1;
             
             % Adaptation (Eq. 14)
@@ -106,7 +101,7 @@ while nfeval<nfevalMAX % Stopping criteria
                 n.*(VarMin + rand(1,D).*(VarMax-VarMin));
         
         % Verify if the pup will survive
-        pup_cost    = testFunction(pup', fhd, fNumber);
+        pup_cost    = calculate(pup);
         nfeval      = nfeval + 1;
         worst       = find(pup_cost<costs_aux==1);
         if ~isempty(worst)

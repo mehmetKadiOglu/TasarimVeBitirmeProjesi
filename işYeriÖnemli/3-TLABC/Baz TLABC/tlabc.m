@@ -1,21 +1,18 @@
-function [bestSolution, bestFitness, iteration]=tlabc(fhd, dimension, maxIteration, fNumber)
+function [bestSolution, bestFitness, iteration]=tlabc()
 
-settings;
+[~, lbArray, ubArray, D, maxFES, popsize] = terminate();
 
-D = dimension;
 lu = [lbArray; ubArray];
 Xmin = lu(1,:);
 Xmax = lu(2,:);
-popsize = 50; 
 trial=zeros(1,popsize);
 limit = 200;
 CR = 0.5;
 X = repmat(Xmin, popsize, 1) + rand(popsize, D) .* (repmat(Xmax-Xmin, popsize, 1));
-val_X = testFunction(X', fhd, fNumber);
+val_X = calculate(X);
 [val_gBest, min_index] = min(val_X); 
 gBest = X(min_index(1),:);
 FES = 0;
-maxFES=maxIteration;
 
 while FES<maxFES 
 
@@ -34,7 +31,7 @@ while FES<maxFES
         Xi(flag) = V(flag);  
         Xi = boundary_repair(Xi,Xmin,Xmax,'reflect'); 
         % Accept or Reject 
-        val_Xi = testFunction(Xi', fhd, fNumber);
+        val_Xi = calculate(Xi);
         FES = FES+1;
         if val_Xi<val_X(i)
             val_X(i) = val_Xi; X(i,:) = Xi;
@@ -59,7 +56,7 @@ while FES<maxFES
         end  
         Xi = boundary_repair(Xi,Xmin,Xmax,'reflect'); 
         %  Accept or Reject
-        val_Xi = testFunction(Xi', fhd, fNumber);
+        val_Xi = calculate(Xi);
         FES = FES+1;
         if  val_Xi<val_X(i)
             val_X(i) = val_Xi; X(i,:) = Xi;
@@ -75,7 +72,7 @@ while FES<maxFES
         solGOBL = (max(X)+min(X))*rand-X(ind,:);
         newSol = [sol;solGOBL];
         newSol = boundary_repair(newSol,Xmin,Xmax,'random');
-        val_sol = testFunction(newSol', fhd, fNumber);
+        val_sol = calculate(newSol);
         FES = FES+2;
         [~,min_index] = min(val_sol);
         X(ind,:) = newSol(min_index(1),:);

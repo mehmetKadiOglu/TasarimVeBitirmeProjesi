@@ -1,6 +1,6 @@
 function [bestSolution, bestFitness, iter]=Case_1_6()
 % *************************** %
-% ** ALGORITHM’S VARIABLES ** %
+% ** ALGORITHMï¿½S VARIABLES ** %
 % *************************** %
 
 [globalMin, L, H, D, GEN, NP] = terminate();
@@ -101,7 +101,7 @@ while (g <= GEN) && (Fit(iBest) >globalMin)
             Fit(j) = f ;
             % if trial is better than the best
             if f <= Fit(iBest)
-                iBest = j ; % update the best’s index
+                iBest = j ; % update the bestï¿½s index
             end
         else
         end

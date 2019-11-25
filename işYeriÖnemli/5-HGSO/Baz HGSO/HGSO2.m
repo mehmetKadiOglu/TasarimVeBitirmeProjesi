@@ -1,11 +1,8 @@
 
-function [bestSolution, bestFitness, iter]=HGSO2(fhd, dimension, maxIteration, fNumber)
+function [bestSolution, bestFitness, iter]=HGSO2()
 
-settings;
-dim = dimension;
-var_down = lbArray;
-var_up = ubArray;
-var_n_gases = 50;       % The swarm size.
+[~, var_down, var_up, dim, maxIteration, var_n_gases] = terminate();
+
 var_n_types = 5;       % The number of group.
 var_niter = (maxIteration / var_n_gases);
 Xnew = zeros(var_n_gases, dim);
@@ -33,7 +30,7 @@ best_pos = zeros(var_n_types,dim);
 for i = 1:var_n_types
      groupDownIndex = 1 + ((i-1)*10);
      groupUpIndex = i*10;
-     fitness(groupDownIndex:groupUpIndex) = testFunction(X(groupDownIndex:groupUpIndex,:)', fhd, fNumber);
+     fitness(groupDownIndex:groupUpIndex) = calculate(X(groupDownIndex:groupUpIndex,:));
      [~, minIndex] = min(fitness(groupDownIndex:groupUpIndex));
      best_pos(i,:) = X(minIndex + (i-1)*10,:);
      best_fit(i) = fitness(minIndex + (i-1)*10);
@@ -59,7 +56,7 @@ for var_iter = 1:var_niter
     end
     Xnew=fun_checkpoisions2(Xnew, dim,var_n_gases,var_down,var_up);  
     for j=1:var_n_gases
-        temp_fit = testFunction(Xnew(j,:)', fhd, fNumber);        
+        temp_fit = calculate(Xnew(j,:));        
         if temp_fit<fitness(j)
             fitness(j)=temp_fit;
             X(j,:)= Xnew(j,:);
@@ -83,7 +80,7 @@ for var_iter = 1:var_niter
 end
 bestSolution = vec_Xbest;
 bestFitness = var_Gbest;
-iter = var_iter * var_n_gases * var_n_types;
+iter = var_iter * var_n_gases;
 end
 
 
