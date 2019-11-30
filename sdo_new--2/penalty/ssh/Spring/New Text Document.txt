@@ -1,6 +1,0 @@
-https://github.com/mkyong/spring-boot/blob/master/spring-data-jpa-postgresql/src/main/java/com/mkyong/StartApplication.java
-https://dzone.com/articles/spring-boot-with-spring-data-jpa
-https://javainterviewpoint.com/spring-boot-crudrepository-example/
-
-https://www.javaguides.net/2019/06/spring-boot-crudrepository-example-tutorial.html
-
