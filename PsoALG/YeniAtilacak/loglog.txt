@@ -1,6 +1,0 @@
-loglog(1:30,rand(30,1),'LineWidth', 2 ,'-^m','MarkerEdgeColor', 'k','MarkerSize',3)
-
-http://www.ece.northwestern.edu/local-apps/matlabhelp/techdoc/ref/linespec.html
-
-Grafiðin eksenlerinin yeniden ölçeklendirilmesi
->> axis([ 0 12 -3 3 ])
