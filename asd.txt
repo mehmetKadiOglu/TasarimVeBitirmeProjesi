@@ -1,0 +1,31 @@
+ecoNew2=eco(j,:)+rand(1,n).*(bestOrganism-BF2.*mutualVector);  BF2 random
+ecoNew1=eco(i,:)+(rand(1,n)*2-1).*(bestOrganism-eco(j,:)); 
+parasiteVector(:,pick)=rand(1,length(pick)).*(ub(pick)-lb(pick))+lb(pick);                         BF2 -- TF=round(1+rand*(1));
+
+
+Xi = X(i,:) + (Best -TF*mean_result).*rand(1,D); 
+
+
+
+Xi = X(i,:) + rand(1,D).*(X(i,:)-X(j,:));
+
+
+
+                    SalpPositions(j,i)=FoodPosition(j)+c1*((ub(j)-lb(j))*c2+lb(j));
+                else
+                    SalpPositions(j,i)=FoodPosition(j)-c1*((ub(j)-lb(j))*c2+lb(j));
+
+
+
+                if rand < w
+                    P(i,j) = New_Point(FDBIndex,j) - rand*(New_Point(RandVec2(i),j) - New_Point(i,j));        RandVec2 = randperm(S.Start_Point);
+                else
+                    P(i,j) = New_Point(RandVec1(i),j) - rand*(New_Point(RandVec2(i),j) - New_Point(i,j));
+
+            if rand < .5
+                ReplacePoint = point(i,:) - rand * (point(R2,:) - BestPoint); 
+            else
+                ReplacePoint = point(i,:) + rand * (point(R2,:) - point(R1,:)); 
+
+
+X(i)=Pop(i,fdbIndex)+F*(Pop(i,r(1))-(Pop(i,r(2))));
